@@ -1,0 +1,218 @@
+{
+    "name": "Rihhana Playlist",
+    "repeat": false,
+    "shuffle": false,
+    "songs": [
+        {
+            "title": "Interlude: Message Of Rasta",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 25,
+                "minutes": 0,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Redemption Song",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 49,
+                "minutes": 2,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Goodbye",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 2,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Happy",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 36,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Interlude: Hold On",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 31,
+                "minutes": 0,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Answer",
+            "artist": "Rihanna",
+            "album": "Boom",
+            "duration": {
+                "seconds": 31,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Hatin On The Club",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 23,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Put It Up",
+            "artist": "Rihanna & Chris Brown",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 35,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Bad Girl ",
+            "artist": "Rihanna & Chris Brown",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 59,
+                "minutes": 2,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Used To [Nobody]",
+            "artist": "Rihanna & Chris Brown",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 51,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Interlude: Open Road (I Love Her)",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 49,
+                "minutes": 0,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Vogue",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 50,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Tip Pon Toe",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 6,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Sexuality",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 30,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Intro: Pray 4 Me",
+            "artist": "Rihanna",
+            "album": "Boom",
+            "duration": {
+                "seconds": 15,
+                "minutes": 1,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Don't Even Try",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 11,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "How I Like It",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 10,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Interlude: Madonna Taught Me",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 36,
+                "minutes": 0,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Whipping My Hair",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 20,
+                "minutes": 3,
+                "hours": 0
+            }
+        },
+        {
+            "title": "Bubble Pop",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 27,
+                "minutes": 4,
+                "hours": 0
+            }
+        },
+        {
+            "title": "World Peace",
+            "artist": "Rihanna",
+            "album": "Boom.",
+            "duration": {
+                "seconds": 7,
+                "minutes": 3,
+                "hours": 0
+            }
+        }
+    ],
+    "played": []
+}

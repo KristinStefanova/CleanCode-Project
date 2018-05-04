@@ -6,22 +6,23 @@ import mutagen.mp3
 
 
 class Duration:
-    def __init__(self, string_time):
-        try:
-            hours, minutes, seconds = string_time.split(':')
-        except Exception as exception:
-            raise exception
-        self.seconds = int(seconds)
-        self.minutes = int(minutes)
-        self.hours = int(hours)
+    def __init__(self, seconds, minutes, hours):
+        self.seconds = seconds
+        self.minutes = minutes
+        self.hours = hours
 
     def __str__(self):
         return f"{self.hours}:{self.minutes}:{self.seconds}"
 
     def __add__(self, other):
-        return Duration(f'{self.hours + other.hours}:{self.minutes + other.minutes}:{self.seconds + other.minutes}')
+        seconds = self.seconds + other.seconds
+        minutes = self.minutes + other.minutes + (seconds // 60)
+        hours = self.hours + other.hours + (minutes // 60)
+        return Duration(seconds % 60, minutes % 60, hours)
 
     def __radd__(self, other):
+        if other == 0:
+            return self
         return self.__add__(other)
 
     def __eq__(self, other):
@@ -44,7 +45,7 @@ class Duration:
         return self.hours
 
 
-def validate_song_arguments(title, artist, album, song_length):
+def validate_song_arguments(title, artist, album, duration):
     if type(title) is not str:
         raise TypeError
 
@@ -54,11 +55,19 @@ def validate_song_arguments(title, artist, album, song_length):
     if type(album) is not str:
         raise TypeError
 
-    if type(song_length) is not str:
+    if type(duration) is not str and type(duration) is not Duration:
         raise TypeError
 
-    if ':' not in song_length:
+    if type(duration) is str and ':' not in duration:
         raise ValueError
+
+
+def extract_duration_from_string(duration_str):
+    try:
+        hours, minutes, seconds = duration_str.split(':')
+    except Exception as exception:
+        raise exception
+    return Duration(int(seconds), int(minutes), int(hours))
 
 
 class Song:
@@ -68,7 +77,11 @@ class Song:
         self.title = title
         self.artist = artist
         self.album = album
-        self.duration = Duration(duration)
+        if type(duration) is str:
+            self.duration = extract_duration_from_string(duration)
+
+        if type(duration) is Duration:
+            self.duration = duration
 
     def __str__(self):
         return
@@ -133,7 +146,7 @@ class Playlist:
 
     def total_length(self):
         total = sum([song.duration for song in self.songs])
-        return str(total.convert_to_seconds())
+        return total.convert_to_seconds()
 
     def count_artist(self, artist):
         return sum([1 for song in self.songs if song.artist == artist])
@@ -161,13 +174,16 @@ class Playlist:
         return result
 
     def print_playlist(self):
-        return tabulate.tabulate([[song.artist, song.title, song.duration]
-                                  for song in self.songs],
-                                 headers=['Artist', 'Song', 'Length'],
-                                 tablefmt='orgtbl')
+        print(tabulate.tabulate([[song.artist, song.title, song.duration]
+                                 for song in self.songs],
+                                headers=['Artist', 'Song', 'Length'],
+                                tablefmt='orgtbl'))
 
     def get_song_list(self, songs):
-        song_list = [song.__dict__ for song in songs]
+        song_list = []
+        for song in songs:
+            song.duration = song.duration.__dict__
+            song_list.append(song.__dict__)
         return song_list
 
     def playlist_to_json_dict(self):
@@ -180,16 +196,10 @@ class Playlist:
 
         return json_dict
 
-    def change_playlist_name(self):
-        playlist_name = self.name
-        if ' ' in self.name:
-            return playlist_name.replace(' ', '-')
-
     def save(self):
-        name = self.change_playlist_name()
         json_dict = self.playlist_to_json_dict()
 
-        with open(f'{name}.json', "w") as file:
+        with open(f"{self.name.replace(' ', '-')}.json", "w") as file:
             json.dump(json_dict, file, indent=4)
 
     @classmethod
@@ -201,7 +211,10 @@ class Playlist:
 
     @classmethod
     def set_song_list(self, songs):
-        song_list = [Song(**song) for song in songs]
+        song_list = []
+        for song in songs:
+            song["duration"] = Duration(**song["duration"])
+            song_list.append(Song(**song))
         return song_list
 
     @classmethod
@@ -231,7 +244,7 @@ class MusicCrawler:
         return f"{hours}:{minutes}:{seconds}"
 
     def generate_playlist(self, name=""):
-        playlist = Playlist()
+        playlist = Playlist(name=name)
         with os.scandir(self.path) as it:
             for entry in it:
                 if entry.is_file():
@@ -248,7 +261,12 @@ class MusicCrawler:
 def main():
     crawler = MusicCrawler("/home/kristin/Downloads/Rihanna - BOOM.-WEB-2018")
     playlist = crawler.generate_playlist(name="Rihhana Playlist")
-    print(playlist.print_playlist())
+    playlist.print_playlist()
+    print(playlist.total_length())
+    playlist.save()
+    new_playlist = Playlist.load(
+        "/home/kristin/Python101/CleanCodeProject/GitExercise/CleanCode-Project/Rihhana-Playlist.json")
+    new_playlist.print_playlist()
 
 
 if __name__ == '__main__':
